@@ -70,7 +70,9 @@ def main():
               'application_files':app_file_count,'archives':sums,
               'application_executable_sha256':executable_sha,
               'matches_tested_executable':executable_sha == tested_sha,
-              'status':'LOCAL CANDIDATE ONLY - public release has unresolved blockers',
+              'status':'LOCAL CANDIDATE - publication not authorized; delivery checks remain',
+              'distribution_review':'No specific third-party redistribution restriction identified for the original files in these packages',
+              'provider_approval_or_legal_guarantee':False,
               'signature':'ad-hoc, not Developer ID or notarized','published':False,
               'excluded':['game binaries','runtime binaries','installers','prefixes','account state','private reports','Git metadata']}
     (out/'release-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

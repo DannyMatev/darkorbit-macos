@@ -1,10 +1,10 @@
-# DarkOrbit for Mac
+# Unofficial macOS launcher for DarkOrbit
 
 An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver.
 
 **Current candidate status: working in the latest user test.** The user confirmed that the native Mac candidate works as expected on the tested Mac. This is a manual report from one configuration, not completion of every acceptance check.
 
-This is a local release candidate, not a published or publisher-approved product. The packaged application still needs the checks listed in [Compatibility](docs/compatibility.md), and the [distribution review](docs/distribution.md) has unresolved questions.
+This is a local release candidate, not a published or publisher-approved product. The [distribution review](docs/distribution.md) found no specific restriction on redistributing the original files in our packages. It does not guarantee publisher account-policy acceptance or approval of this Wine configuration. Delivery and acceptance work remains in [Compatibility](docs/compatibility.md).
 
 ## Want to play?
 

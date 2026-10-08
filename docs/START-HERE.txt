@@ -1,4 +1,4 @@
-DarkOrbit for Mac - local test candidate
+Unofficial macOS launcher for DarkOrbit - local test candidate
 
 This is an unofficial, vibe-coded hobby project built with AI assistance.
 It is not affiliated with or endorsed by the game publisher.
@@ -10,8 +10,9 @@ This package is for local candidate testing.
 
 This package contains the community launcher only. You obtain the official
 Windows game and compatibility components separately under their providers'
-terms. Publisher-policy and licensing questions remain open. This candidate
-has not been cleared for a public release.
+terms. The review found no specific redistribution restriction for our own
+launcher and guide. It does not provide publisher endorsement or account-safety
+assurance for this Wine setup. Publication has not been authorized.
 
 Requirements
 - An Apple Silicon Mac and macOS 14.6 or later.

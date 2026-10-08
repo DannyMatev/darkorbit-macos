@@ -69,7 +69,7 @@
   ],
   "limitations": [
     "Privacy scans are heuristic; an independent review found no private-data leak in the reviewed publication files",
-    "Source and guide are prepared locally; public release has unresolved legal and delivery questions"
+    "Package-scope distribution review complete; provider assurances and remaining delivery checks are documented separately"
   ],
   "candidate_test_history": [
     {
@@ -93,9 +93,9 @@
     }
   ],
   "post_gameplay_code_changes": {
-    "scope": "Two fixed error messages now refer only to command output retained by this app",
+    "scope": "Two fixed privacy error messages and visible unofficial-project labels clarified",
     "runtime_configuration_or_control_flow_changed": false,
-    "reason": "The game and installers may independently write private local logs",
+    "reason": "Distinguish our command-output handling from vendor logs and avoid implying publisher endorsement",
     "gameplay_retested_after_wording_change": false
   }
 }

@@ -45,7 +45,7 @@ Export an explicit allowlist of original source, resources, documentation, tests
 
 Review source, generated text, archive entries, binary strings, debug information, metadata, symlinks, and intended Git history for personal data. Check commit author and committer identity separately before any publication. A clean working tree alone says nothing about old commits.
 
-Keep signing/notarization credentials outside the repository. No public upload is part of the local build. Resolve [distribution questions](distribution.md) and complete the relevant [acceptance checks](compatibility.md) before describing a release as ready for ordinary users.
+Keep signing/notarization credentials outside the repository. No public upload is part of the local build. Apply the scope limits in [Distribution review](distribution.md), make an explicit owner-approved publication decision, and complete the relevant [acceptance checks](compatibility.md) before describing a release as ready for ordinary users.
 
 ## Package a local candidate
 

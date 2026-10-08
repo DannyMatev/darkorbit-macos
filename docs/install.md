@@ -2,7 +2,7 @@
 
 **The native candidate works in the latest user-confirmed test on the documented Mac.** The separate development setup also has an earlier hour-long gameplay report. Other Macs and the individual acceptance checks listed in [Compatibility](compatibility.md) remain unverified.
 
-These instructions are for local candidate testing. There is no public download release yet. Complete distribution review and packaged-app validation are still pending.
+These instructions are for local candidate testing. There is no public download release yet. The package-scope distribution review is complete; ordinary-user delivery and remaining acceptance checks are still pending.
 
 ## Before you start
 
@@ -12,7 +12,7 @@ Allow at least 25 GB of free space as a conservative installation allowance. The
 
 Rosetta is Apple's Intel-app compatibility software. If it is missing, follow [Apple's installation instructions](https://support.apple.com/en-us/102527). Review the terms in Apple's prompt. The launcher does not silently accept them for you.
 
-Read [Known limitations](limitations.md) and [Distribution review](distribution.md). Publisher approval for this configuration has not been established.
+Read [Known limitations](limitations.md) and [Distribution review](distribution.md). The project is unofficial, and current publisher assurance for this Wine configuration has not been obtained.
 
 ## Get the four installation files
 

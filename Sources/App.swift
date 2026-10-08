@@ -64,7 +64,7 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         menu.addItem(applicationItem)
         let applicationMenu = NSMenu()
         applicationItem.submenu = applicationMenu
-        let about = applicationMenu.addItem(withTitle: "About DarkOrbit for Mac", action: #selector(showAbout), keyEquivalent: "")
+        let about = applicationMenu.addItem(withTitle: "About this unofficial launcher", action: #selector(showAbout), keyEquivalent: "")
         about.target = self
         applicationMenu.addItem(.separator())
         applicationMenu.addItem(withTitle: "Quit DarkOrbit for Mac", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -74,7 +74,7 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
     private func createWindow() {
         window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 790, height: 800),
                           styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
-        window.title = "DarkOrbit for Mac"
+        window.title = "Unofficial DarkOrbit launcher"
         window.delegate = self
         window.contentMinSize = NSSize(width: 730, height: 570)
         window.center()
@@ -110,7 +110,7 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
             stack.bottomAnchor.constraint(equalTo: document.bottomAnchor, constant: -24)
         ])
 
-        let title = label("DarkOrbit for Mac", size: 27, weight: .semibold)
+        let title = label("Unofficial launcher for DarkOrbit", size: 27, weight: .semibold)
         stack.addArrangedSubview(title)
         stack.addArrangedSubview(label("Unofficial, vibe-coded hobby project built with AI assistance. This experimental app sets up a Windows compatibility environment for the official game. It is not affiliated with or endorsed by the game publisher.", size: 13))
         stack.addArrangedSubview(label("Local test build for Apple Silicon Macs. Rosetta is required. Other Mac configurations have not been verified. No game files or Windows runtimes are included.", size: 12, secondary: true))
@@ -382,7 +382,7 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
     }
 
     @objc private func showAbout() {
-        showMessage("DarkOrbit for Mac 0.1.0", detail: "An unofficial, vibe-coded hobby project built with AI assistance. This experimental local launcher contains no game or Windows runtime binaries. It is not affiliated with or endorsed by the game publisher. The game and dependencies retain their own terms and licenses.")
+        showMessage("Unofficial DarkOrbit launcher 0.1.0", detail: "An unofficial, vibe-coded hobby project built with AI assistance. This experimental local launcher contains no game or Windows runtime binaries. It is not affiliated with or endorsed by the game publisher. The game and dependencies retain their own terms and licenses.")
     }
 
     private func showMessage(_ title: String, detail: String) {

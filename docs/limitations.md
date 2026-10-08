@@ -9,6 +9,6 @@
 - Installation requires four separately downloaded, exact-version files. If an upstream file disappears, the candidate cannot substitute another version automatically.
 - The official updater can change the game and its requirements. We cannot guarantee that a later version will continue to work.
 - The candidate is not Developer ID signed or notarized. Distribution outside the development machine still needs work.
-- Publisher approval for this setup is unresolved. We cannot promise legal clearance or protection from account restrictions. See [Distribution review](distribution.md).
+- No current publisher assurance about this Wine setup or account treatment has been obtained. No specific third-party redistribution restriction was identified for the original files in our packages. These are separate findings; see [Distribution review](distribution.md).
 
 The project does not modify the game, collect credentials, automate gameplay, or supply a private server. These boundaries do not establish publisher approval.

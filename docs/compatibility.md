@@ -51,4 +51,4 @@ Earlier candidate attempts encountered a missing page background and repeated se
 
 Machine-readable results and the tested executable fingerprint are in [verification.json](verification.json). A developer probe exercised the same native installer code used by the app; this does not claim the entire graphical file-picker flow was tested.
 
-After the successful user test, two fixed error messages were clarified to describe only the command output retained by this app. No runtime configuration or control flow changed. Core and release-boundary tests were rerun; gameplay was not repeated for this wording edit. The manifest distinguishes the rebuilt executable from the fingerprint used in the gameplay report.
+After the successful user test, two fixed privacy error messages were clarified and visible app labels were made explicitly unofficial. No runtime configuration, installation identity, or control flow changed. Core and release-boundary tests were rerun; gameplay was not repeated for these presentation edits. The manifest distinguishes the rebuilt executable from the fingerprint used in the gameplay report.
