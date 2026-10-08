@@ -245,7 +245,7 @@ enum RuntimeCore {
         // avoids guessing ownership of another Wine application's processes.
         try ensureQuiet()
         if process.terminationStatus != 0 {
-            throw AppFailure.message("The official launcher exited with an error. No game output was retained. Check the installation and the official game's status.")
+            throw AppFailure.message("The official launcher exited with an error. This app did not retain command output. Check the installation and the official game's status.")
         }
         status("The game session has ended. You can play again or close this app.")
     }

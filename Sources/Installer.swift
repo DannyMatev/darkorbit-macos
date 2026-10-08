@@ -85,7 +85,7 @@ enum Installer {
         } catch let error as AppFailure {
             throw error
         } catch {
-            throw AppFailure.message("Setup stopped because a file or system check failed. Existing files were preserved. Retry setup after resolving the problem; no raw logs were saved.")
+            throw AppFailure.message("Setup stopped because a file or system check failed. Existing files were preserved. Retry setup after resolving the problem. This app did not save command output.")
         }
     }
 

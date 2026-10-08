@@ -42,7 +42,7 @@ Launch always starts the official updater in its game directory. The updater may
 
 An advisory installation lock coordinates copies of this application. The current process guard is deliberately conservative: it refuses operations while any recognized Wine or DarkOrbit process is active. It does not terminate another application's session. This can require users to close an unrelated Wine application normally before proceeding.
 
-The Mac launcher stays open while the game runs. Normal game output is discarded rather than stored as a raw log. Setup checks may inspect bounded command output internally; errors presented by the app must use fixed, non-sensitive messages.
+The Mac launcher stays open while the game runs. It discards normal game command output rather than storing it as a raw log. Setup checks may inspect bounded command output internally; errors presented by the app must use fixed, non-sensitive messages. The official game, Wine, and Microsoft installer can independently create local logs and account files. These remain private installation data and must never enter a project package or issue report.
 
 ## Installation and maintenance
 
