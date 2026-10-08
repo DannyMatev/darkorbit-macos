@@ -1,5 +1,6 @@
 # Known limitations
 
+- The current native candidate fails gameplay acceptance: login succeeds, but the next page has a missing background and repeatedly returns to server selection. Investigation is ongoing. The earlier hour-long gameplay report applies to the separate development setup.
 - This is an experimental hobby project with one user-reported gameplay configuration. It has no support service or maintenance guarantee.
 - The native application candidate still needs installation and lifecycle validation. See [Compatibility](compatibility.md) for what has and has not been tested.
 - Occasional frame drops were reported. Lowering graphics helped in that session, but no frame-rate measurements or exact settings were captured.

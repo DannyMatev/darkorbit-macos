@@ -1,6 +1,8 @@
 # Start here
 
-These instructions accompany a local experimental candidate. There is no public download release yet. Complete distribution review and packaged-app validation are still pending.
+**The current candidate has not reached playable gameplay.** Login succeeds, but the page after login has a missing background and repeatedly returns to server selection. Investigation is ongoing. The successful hour-long session used the separate development setup.
+
+These instructions are for local candidate testing. There is no public download release yet. Complete distribution review and packaged-app validation are still pending.
 
 ## Before you start
 

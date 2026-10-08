@@ -1,0 +1,73 @@
+{
+  "recorded_on": "2026-10-08",
+  "scope": "Local candidate engineering checks; no blanket compatibility or publication claim",
+  "source_implementation_commit": "7975502",
+  "candidate_executable_sha256": "e445c4ebd0dfaee2080e436ded369b4d6b8cb670a911af2b7a906a3a475d86b7",
+  "automated": {
+    "core_configuration_hashing_paths_locks_commands": "PASS",
+    "installer_rejection_and_privacy_assertions": 41,
+    "installer_rejection_and_privacy_result": "PASS",
+    "native_clean_installation_backend": "PASS",
+    "fresh_prefix_x86_and_x64_execution": "PASS",
+    "windows_dotnet_core_and_desktop_6_0_36": "PASS",
+    "repeated_setup_preserves_existing_installation": "PASS",
+    "build_and_strict_ad_hoc_signature": "PASS",
+    "source_and_bundle_privacy_style_scan": "PASS",
+    "release_boundary_assertions": 12,
+    "release_boundary_result": "PASS"
+  },
+  "native_ui": {
+    "first_launch_layout": "Observed and readable",
+    "verification_button": "PASS",
+    "official_updater_launch": "PASS; community app enters live-session state",
+    "installation_and_removal_disabled_during_session": "PASS",
+    "duplicate_installation_lock_during_real_session": "PASS; independent acquisition rejected while app held session lock"
+  },
+  "candidate_gameplay": {
+    "acceptance": "FAIL",
+    "source": "User report on the new native installation",
+    "login": "Successful",
+    "post_login_page": "Missing background and repeated server-selection loop",
+    "diagnosis": "Ongoing",
+    "playable_gameplay_confirmed": false
+  },
+  "candidate_diagnostics": {
+    "runtime_comparison_to_working_development_setup": {
+      "result": "PASS",
+      "matching_entries": 6166,
+      "compared": [
+        "File hashes",
+        "Symlink targets",
+        "Executable permission bits"
+      ]
+    },
+    "matching_dxmt_loaded_by_game_and_browser_helpers": "Observed",
+    "scope_limit": "Matching runtime files and loaded graphics modules do not prove correct rendering or equivalence of the complete installed environment",
+    "immutable_game_files_compared": 343,
+    "immutable_game_files_result": "All checked vendor binaries and assets match",
+    "allowed_windows_and_wine_configuration": "No differences in restricted version and graphics-driver keys",
+    "restart_test": "Awaiting user result; no runtime change made without an established cause"
+  },
+  "manual_gameplay": {
+    "source": "User report on development configuration",
+    "approximate_minutes": 60,
+    "overall": "Stable and smooth overall",
+    "intermittent_frame_drops": "Substantially reduced by lowering in-game graphics",
+    "measured_fps": null,
+    "exact_settings": null,
+    "same_as_packaged_app_acceptance": false
+  },
+  "not_yet_verified": [
+    "Installer file-picker flow from first selection to completion",
+    "Packaged game normal close",
+    "Three final cold Finder launches",
+    "Individual input, audio, display, recovery and update scenarios",
+    "Measured performance",
+    "Installation on another Mac",
+    "Developer ID signing and notarization"
+  ],
+  "limitations": [
+    "Privacy scans are heuristic; an independent review found no private-data leak in the reviewed publication files",
+    "Source and guide are prepared locally; public release has unresolved legal and delivery questions"
+  ]
+}

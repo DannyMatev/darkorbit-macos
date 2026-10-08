@@ -2,7 +2,9 @@
 
 An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver.
 
-This is a local release candidate, not a published or publisher-approved product. The working development setup has been played successfully. The packaged application still needs the checks listed in [Compatibility](docs/compatibility.md), and the [distribution review](docs/distribution.md) has unresolved questions.
+**Current candidate status: gameplay acceptance failed.** Login succeeds, but the page after login has a missing background and repeatedly returns to server selection. The cause is under investigation. The earlier working development setup is separate from this native installation.
+
+This is a local release candidate, not a published or publisher-approved product. The packaged application still needs the checks listed in [Compatibility](docs/compatibility.md), and the [distribution review](docs/distribution.md) has unresolved questions.
 
 ## Want to play?
 
