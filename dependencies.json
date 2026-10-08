@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "reviewed_on": "2026-10-08",
+  "distribution": "None of these components is bundled in the application or source release. Users obtain them separately under provider terms.",
+  "components": [
+    {
+      "id": "wine-engine",
+      "filename": "WS12WineSikarugir11.0_1.tar.xz",
+      "version": "11.0 revision 1",
+      "official_url": "https://github.com/Sikarugir-App/Engines/releases/download/v1.0/WS12WineSikarugir11.0_1.tar.xz",
+      "sha256": "67e29fb3d74f363af39c69ba11f9b13a79812c5db07cf4748672658e4a200a0e",
+      "bundled": false
+    },
+    {
+      "id": "runtime-template",
+      "filename": "Template-1.0.21.tar.xz",
+      "version": "1.0.21",
+      "official_url": "https://github.com/Sikarugir-App/Template/releases/download/v1.0/Template-1.0.21.tar.xz",
+      "sha256": "bbe996e4e4375318485953d0c7818b7b4b0a4dc1f13303bcc584f99f7602f78d",
+      "bundled": false
+    },
+    {
+      "id": "official-game",
+      "filename": "DarkOrbit_Version1.1.113.zip",
+      "version": "1.1.113",
+      "official_url": "https://alicdn-oss-prod.darkorbit.com/release/archive/DarkOrbit_Version1.1.113.zip",
+      "sha256": "25dbc9ba125b35ef08beb3d239076a89b48667377d225775a9703323f7586073",
+      "bundled": false
+    },
+    {
+      "id": "windows-desktop-runtime",
+      "filename": "windowsdesktop-runtime-6.0.36-win-x64.exe",
+      "version": "6.0.36",
+      "official_url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x64.exe",
+      "sha256": "0d20debb26fc8b2bc84f25fbd9d4596a6364af8517ebf012e8b871127b798941",
+      "bundled": false
+    }
+  ],
+  "selected_graphics": {
+    "name": "DXMT",
+    "version": "v0.80-244-g7c8dee1",
+    "source_commit": "7c8dee1c2d73415301ceb7d1fa810861cef4cd67",
+    "obtained_from": "runtime-template"
+  },
+  "first_party_license": "MIT; applies only to original repository code and documentation",
+  "runtime_redistribution_review": "Incomplete; runtime binaries excluded"
+}

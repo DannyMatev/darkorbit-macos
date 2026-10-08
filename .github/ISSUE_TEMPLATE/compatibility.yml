@@ -1,0 +1,33 @@
+name: Compatibility report
+description: Share results from a specific Mac and application build.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report only checks you actually performed. Do not attach account screenshots, credentials, cookies, tokens, raw logs, or an installation folder. A visual impression is useful; label it separately from an FPS measurement.
+  - type: input
+    id: configuration
+    attributes:
+      label: Tested configuration
+      description: Mac chip, memory, macOS version, app build, and game/runtime versions. No serial numbers, computer names, or personal paths.
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: What worked and what did not?
+      description: Include installation, launch, approximate active play time, quit, and relaunch where tested. State anything you did not test.
+    validations:
+      required: true
+  - type: textarea
+    id: performance
+    attributes:
+      label: Graphics and performance
+      description: Resolution, graphics settings, and observed behavior. For measured FPS or frame times, describe the measurement method.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This report contains no account details, personal paths, raw logs, or private screenshots.
+          required: true

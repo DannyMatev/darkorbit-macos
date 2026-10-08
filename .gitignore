@@ -1,0 +1,12 @@
+/build/
+/dist/
+/.build/
+/private/
+/runtime/
+/state/
+/downloads/
+/work/
+*.dSYM/
+__pycache__/
+*.py[cod]
+.DS_Store

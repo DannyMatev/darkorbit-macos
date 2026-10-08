@@ -1,0 +1,33 @@
+name: Problem report
+description: Report a reproducible setup or launcher problem without account data.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach credentials, cookies, tokens, account screenshots, raw logs, or installation folders. Remove home-directory paths and personal names. This form does not need game account details.
+  - type: input
+    id: configuration
+    attributes:
+      label: Mac and software versions
+      description: Mac chip, memory, macOS version, app build, and game version if known. Do not provide a serial number or computer name.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and result
+      description: What did you do, what did you expect, and what happened? Include the app's short error message in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: frequency
+    attributes:
+      label: When does it happen?
+      description: State whether it repeats, started after an update, or changes with graphics settings. No raw logs.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I have removed account details, personal paths, raw logs, and other private information.
+          required: true
