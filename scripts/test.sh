@@ -8,4 +8,5 @@ xcrun swiftc -module-cache-path "$PWD/build/module-cache" -O -target arm64-apple
 build/core-tests
 xcrun swiftc -module-cache-path "$PWD/build/module-cache" -O -target arm64-apple-macos14.6 Sources/Core.swift Sources/Installer.swift tests/InstallerTests.swift -o build/installer-tests
 build/installer-tests
+python3 -B tests/ReleaseTests.py
 python3 -B scripts/audit_release.py --source-only

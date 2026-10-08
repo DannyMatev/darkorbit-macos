@@ -2,7 +2,7 @@
 
 Updated 8 October 2026. A successful development setup and a verified application release are different milestones.
 
-The current native candidate has failed gameplay acceptance. The user can log in, but the page after login has a missing background and repeatedly returns to server selection. Diagnosis is ongoing. The earlier hour-long development session remains valid evidence for that separate configuration.
+The current native candidate has failed gameplay acceptance. The user can log in, but the page after login has a missing background and repeatedly returns to server selection. The same symptoms persisted after a full normal restart. Diagnosis is ongoing. The earlier hour-long development session remains valid evidence for that separate configuration.
 
 ## Development gameplay evidence
 

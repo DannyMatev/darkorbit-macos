@@ -1,0 +1,48 @@
+DarkOrbit for Mac - local test candidate
+
+This is an unofficial, vibe-coded hobby project built with AI assistance.
+It is not affiliated with or endorsed by the game publisher.
+
+Current status: gameplay acceptance failed. Login succeeds, but the page after
+login has a missing background and repeatedly returns to server selection.
+Investigation is ongoing. The earlier hour-long gameplay session used a
+separate development setup. This package is for local candidate testing.
+
+This package contains the community launcher only. You obtain the official
+Windows game and compatibility components separately under their providers'
+terms. Publisher-policy and licensing questions remain open. This candidate
+has not been cleared for a public release.
+
+Requirements
+- An Apple Silicon Mac and macOS 14.6 or later.
+- Rosetta, installed through Apple's supported process.
+- Allow 25 GB free during setup and a working internet connection to play.
+  This is a conservative allowance, not a measured minimum.
+- Only the documented M1 Pro / macOS 26.0 development setup has gameplay evidence.
+
+Getting started
+1. Extract this ZIP and open DarkOrbit for Mac.app.
+2. Read the linked provider terms and download the four listed files using
+   the app's buttons. Leave their filenames unchanged and keep them together.
+3. Select the terms-review checkbox, then choose the four files to install.
+4. After setup finishes, choose Play / check for game updates.
+5. Sign in through the official game. Keep the community launcher open until
+   the game and updater have closed normally.
+
+The app keeps its data in your Library's Application Support folder under
+DarkOrbitCommunity. It uses a new installation and does not import old accounts.
+No Python, Homebrew, or developer tools are required to use the compiled app.
+
+This local build is ad-hoc signed and is not notarized. A downloaded copy may
+be blocked by macOS. Do not disable security settings or remove quarantine.
+A public signed distribution still needs separate work.
+
+If setup is interrupted, close any setup windows normally and use Resume setup.
+Verify installation checks compatibility files without replacing the game.
+For occasional frame drops, try lower graphics settings inside the game.
+To remove this installation, close the game, then use Move installation to
+Trash. This includes its local settings and sign-in data and is recoverable
+from Trash. Other games and Wine installations are left alone.
+
+Further instructions and limitations are in the included docs folder.
+No credentials, private logs, or account screenshots should be shared in reports.

@@ -46,3 +46,9 @@ Export an explicit allowlist of original source, resources, documentation, tests
 Review source, generated text, archive entries, binary strings, debug information, metadata, symlinks, and intended Git history for personal data. Check commit author and committer identity separately before any publication. A clean working tree alone says nothing about old commits.
 
 Keep signing/notarization credentials outside the repository. No public upload is part of the local build. Resolve [distribution questions](distribution.md) and complete the relevant [acceptance checks](compatibility.md) before describing a release as ready for ordinary users.
+
+## Package a local candidate
+
+Commit the intended source first, then run `python3 -B scripts/package.py`. The packager checks the exact file allowlist and Git contents, copies the approved source into a temporary folder, builds the app there, verifies its ad-hoc signature, and creates source and app ZIP files plus checksums in `dist/`. It does not replace a running development app or change a game installation. No remote is contacted by packaging and nothing is published. The app ZIP includes `START-HERE.txt` and the user documentation.
+
+The release manifest records the source commit and whether the resulting executable matches the fingerprint in `verification.json`. A different executable needs its own acceptance record. A matching fingerprint does not turn failed or untested checks into passes. Close the community launcher and game normally before using `build.sh` to replace the development app or performing launch tests on an extracted candidate.

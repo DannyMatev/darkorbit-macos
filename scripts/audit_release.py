@@ -6,16 +6,55 @@ import json
 import os
 from pathlib import Path
 import re
+import stat
 import subprocess
 import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-TOP_FILES = {'AGENTS.md', '.gitignore', 'README.md', 'CONTRIBUTING.md', 'CHANGELOG.md',
-             'LICENSE', 'THIRD_PARTY_NOTICES.md', 'dependencies.json'}
-TOP_DIRS = {'Sources', 'Resources', 'scripts', 'tests', 'docs', '.github'}
+APPROVED_FILES = {
+    '.github/ISSUE_TEMPLATE/bug.yml',
+    '.github/ISSUE_TEMPLATE/compatibility.yml',
+    '.gitignore',
+    'AGENTS.md',
+    'CHANGELOG.md',
+    'CONTRIBUTING.md',
+    'LICENSE',
+    'README.md',
+    'Resources/Info.plist',
+    'Sources/App.swift',
+    'Sources/Core.swift',
+    'Sources/Installer.swift',
+    'THIRD_PARTY_NOTICES.md',
+    'dependencies.json',
+    'docs/START-HERE.txt',
+    'docs/architecture.md',
+    'docs/compatibility.md',
+    'docs/dependencies.md',
+    'docs/development.md',
+    'docs/distribution.md',
+    'docs/install.md',
+    'docs/limitations.md',
+    'docs/troubleshooting.md',
+    'docs/verification.json',
+    'scripts/audit_release.py',
+    'scripts/build.sh',
+    'scripts/make-icon.swift',
+    'scripts/package.py',
+    'scripts/probe-build.sh',
+    'scripts/test.sh',
+    'tests/CoreTests.swift',
+    'tests/InstallationProbe.swift',
+    'tests/InstallerTests.swift',
+    'tests/ReleaseTests.py',
+}
+APPROVED_DIRS = {str(parent) for name in APPROVED_FILES
+                 for parent in Path(name).parents if str(parent) != '.'}
+TOP_FILES = {name for name in APPROVED_FILES if '/' not in name}
 SUFFIXES = {'.swift', '.sh', '.py', '.json', '.plist', '.md', '.txt', '.yml', '.yaml'}
 DISALLOWED_PARTS = {'__pycache__', '.DS_Store', 'runtime', 'state', 'downloads', 'work', 'private'}
+APP_FILES = {'Contents/Info.plist', 'Contents/MacOS/DarkOrbitCommunity',
+             'Contents/Resources/AppIcon.icns', 'Contents/_CodeSignature/CodeResources'}
 # These patterns identify categories, never store a user's actual private values.
 PATTERNS = [
     re.compile(rb'/Users/[A-Za-z0-9_.-]+/'),
@@ -28,12 +67,35 @@ PATTERNS = [
 ]
 
 def selected_files():
+    if ROOT.is_symlink() or not ROOT.is_dir():
+        raise ValueError('Publication root is absent or is a link')
     files = []
-    for item in sorted(ROOT.iterdir()):
-        if item.name in TOP_FILES:
-            files.append(item)
-        elif item.name in TOP_DIRS:
-            files.extend(p for p in item.rglob('*') if p.is_file() or p.is_symlink())
+
+    def visit(path):
+        relative = str(path.relative_to(ROOT))
+        # Reject unknown entries before inspecting or traversing their contents.
+        if relative not in APPROVED_FILES and relative not in APPROVED_DIRS:
+            raise ValueError('Unreviewed entry in a publication directory')
+        try:
+            mode = path.lstat().st_mode
+        except FileNotFoundError:
+            raise ValueError('A required publication file or directory is absent') from None
+        if stat.S_ISLNK(mode):
+            raise ValueError('Publication files and their parent directories cannot be links')
+        if stat.S_ISDIR(mode):
+            if relative not in APPROVED_DIRS:
+                raise ValueError('A publication file was replaced by a directory')
+            for child in sorted(path.iterdir()):
+                visit(child)
+        elif stat.S_ISREG(mode) and relative in APPROVED_FILES:
+            files.append(path)
+        else:
+            raise ValueError('Publication selection contains an unexpected file type')
+
+    for name in sorted({path.split('/')[0] for path in APPROVED_FILES}):
+        visit(ROOT / name)
+    if {str(path.relative_to(ROOT)) for path in files} != APPROVED_FILES:
+        raise ValueError('A required allowlisted publication file is absent')
     return sorted(files)
 
 def check_content(data, label, text=True):
@@ -68,11 +130,26 @@ def audit_source():
     return files
 
 
+def check_git_paths(data):
+    for name in data.split(b'\0'):
+        if not name:
+            continue
+        check_content(name, 'Git path', text=False)
+        try:
+            relative = name.decode('utf-8')
+        except UnicodeError:
+            raise ValueError('Git contains an unreadable path; value withheld') from None
+        if relative not in APPROVED_FILES:
+            raise ValueError('Git contains a path outside the exact release allowlist; value withheld')
+
+
 def audit_git(files):
     if not (ROOT/'.git').exists():
         return
     allowed = {str(p.relative_to(ROOT)) for p in files}
-    tracked = subprocess.check_output(['git','ls-files','-z'], cwd=ROOT).decode().split('\0')
+    tracked_data = subprocess.check_output(['git','ls-files','-z'], cwd=ROOT)
+    check_git_paths(tracked_data)
+    tracked = tracked_data.decode().split('\0')
     if any(name and name not in allowed for name in tracked):
         raise ValueError('Git index includes files outside the release allowlist')
     remotes = subprocess.check_output(['git','remote'],cwd=ROOT).strip()
@@ -83,8 +160,14 @@ def audit_git(files):
         return
     objects = subprocess.check_output(['git','rev-list','--objects','--all'],cwd=ROOT).splitlines()
     for line in objects:
-        oid = line.split(b' ',1)[0].decode('ascii')
+        object_id, separator, object_path = line.partition(b' ')
+        if separator:
+            check_content(object_path, 'Git object path', text=False)
+        oid = object_id.decode('ascii')
         kind = subprocess.check_output(['git','cat-file','-t',oid],cwd=ROOT).strip()
+        if kind == b'commit':
+            paths = subprocess.check_output(['git','ls-tree','-rz','--name-only','--full-tree',oid],cwd=ROOT)
+            check_git_paths(paths)
         if kind in {b'blob',b'commit',b'tag'}:
             data = subprocess.check_output(['git','cat-file','-p',oid],cwd=ROOT)
             check_content(data, 'Git object', text=False)
@@ -93,20 +176,24 @@ def audit_git(files):
 def audit_app(app):
     if app.is_symlink() or not app.is_dir():
         raise ValueError('Application bundle is absent or unsafe')
-    count = 0
+    found = set()
     for path in app.rglob('*'):
         if path.is_symlink():
             raise ValueError('Unexpected application symlink')
         if path.is_file():
             rel = path.relative_to(app)
+            if str(rel) not in APP_FILES:
+                raise ValueError('Application contains a file outside its exact allowlist')
             if any(part in DISALLOWED_PARTS for part in rel.parts):
                 raise ValueError('Third-party or state directory bundled in app')
             data = path.read_bytes()
             check_content(data, str(rel), text=False)
             if path.suffix.lower() in {'.dll','.exe','.dylib','.xz','.zip','.pdb'}:
                 raise ValueError('Unexpected third-party binary in app')
-            count += 1
-    return count
+            found.add(str(rel))
+    if found != APP_FILES:
+        raise ValueError('Application is missing a required allowlisted file')
+    return len(found)
 
 
 def main():

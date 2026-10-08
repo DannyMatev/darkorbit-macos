@@ -46,7 +46,7 @@
     "immutable_game_files_compared": 343,
     "immutable_game_files_result": "All checked vendor binaries and assets match",
     "allowed_windows_and_wine_configuration": "No differences in restricted version and graphics-driver keys",
-    "restart_test": "Awaiting user result; no runtime change made without an established cause"
+    "restart_test": "FAIL; user reports the same symptoms after a full normal restart"
   },
   "manual_gameplay": {
     "source": "User report on development configuration",
