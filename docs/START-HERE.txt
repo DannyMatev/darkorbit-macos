@@ -3,10 +3,10 @@ DarkOrbit for Mac - local test candidate
 This is an unofficial, vibe-coded hobby project built with AI assistance.
 It is not affiliated with or endorsed by the game publisher.
 
-Current status: gameplay acceptance failed. Login succeeds, but the page after
-login has a missing background and repeatedly returns to server selection.
-Investigation is ongoing. The earlier hour-long gameplay session used a
-separate development setup. This package is for local candidate testing.
+Current status: the user confirmed that the native candidate works as expected
+on the tested Mac. The earlier hour-long gameplay session used a separate
+development setup. Other Macs and individual features still need testing.
+This package is for local candidate testing.
 
 This package contains the community launcher only. You obtain the official
 Windows game and compatibility components separately under their providers'
@@ -18,7 +18,7 @@ Requirements
 - Rosetta, installed through Apple's supported process.
 - Allow 25 GB free during setup and a working internet connection to play.
   This is a conservative allowance, not a measured minimum.
-- Only the documented M1 Pro / macOS 26.0 development setup has gameplay evidence.
+- Gameplay evidence is limited to the documented M1 Pro / macOS 26.0 Mac.
 
 Getting started
 1. Extract this ZIP and open DarkOrbit for Mac.app.

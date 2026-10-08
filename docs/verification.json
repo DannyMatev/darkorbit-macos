@@ -24,12 +24,13 @@
     "duplicate_installation_lock_during_real_session": "PASS; independent acquisition rejected while app held session lock"
   },
   "candidate_gameplay": {
-    "acceptance": "FAIL",
-    "source": "User report on the new native installation",
-    "login": "Successful",
-    "post_login_page": "Missing background and repeated server-selection loop",
-    "diagnosis": "Ongoing",
-    "playable_gameplay_confirmed": false
+    "acceptance": "PASS_USER_CONFIRMED",
+    "source": "Latest user report on the native Mac candidate",
+    "reported_result": "Everything working as expected",
+    "playable_gameplay_confirmed": true,
+    "duration_minutes": null,
+    "individually_tested_actions": null,
+    "scope": "One tested Mac; manual report, not a benchmark or full acceptance matrix"
   },
   "candidate_diagnostics": {
     "runtime_comparison_to_working_development_setup": {
@@ -46,7 +47,7 @@
     "immutable_game_files_compared": 343,
     "immutable_game_files_result": "All checked vendor binaries and assets match",
     "allowed_windows_and_wine_configuration": "No differences in restricted version and graphics-driver keys",
-    "restart_test": "FAIL; user reports the same symptoms after a full normal restart"
+    "restart_test": "Earlier attempt: symptoms persisted after restart; a later user retest succeeded"
   },
   "manual_gameplay": {
     "source": "User report on development configuration",
@@ -69,5 +70,32 @@
   "limitations": [
     "Privacy scans are heuristic; an independent review found no private-data leak in the reviewed publication files",
     "Source and guide are prepared locally; public release has unresolved legal and delivery questions"
-  ]
+  ],
+  "candidate_test_history": [
+    {
+      "acceptance": "FAIL",
+      "source": "User report on the new native installation",
+      "login": "Successful",
+      "post_login_page": "Missing background and repeated server-selection loop",
+      "diagnosis": "Cause not independently established",
+      "playable_gameplay_confirmed": false,
+      "stage": "Earlier attempt on 2026-10-08"
+    },
+    {
+      "stage": "Later report on 2026-10-08",
+      "reported_service_issue": "User reported a general server problem",
+      "independent_service_confirmation": false
+    },
+    {
+      "stage": "Latest retest on 2026-10-08",
+      "acceptance": "PASS_USER_CONFIRMED",
+      "runtime_configuration_changed": false
+    }
+  ],
+  "post_gameplay_code_changes": {
+    "scope": "Two fixed error messages now refer only to command output retained by this app",
+    "runtime_configuration_or_control_flow_changed": false,
+    "reason": "The game and installers may independently write private local logs",
+    "gameplay_retested_after_wording_change": false
+  }
 }

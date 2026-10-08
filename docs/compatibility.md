@@ -2,7 +2,7 @@
 
 Updated 8 October 2026. A successful development setup and a verified application release are different milestones.
 
-The current native candidate has failed gameplay acceptance. The user can log in, but the page after login has a missing background and repeatedly returns to server selection. The same symptoms persisted after a full normal restart. Diagnosis is ongoing. The earlier hour-long development session remains valid evidence for that separate configuration.
+The user confirmed that the native candidate works as expected in the latest test. This establishes a successful manual retest on the documented Mac. It does not establish every individual behavior below or a measured session duration. The earlier hour-long development session remains separate evidence.
 
 ## Development gameplay evidence
 
@@ -29,8 +29,8 @@ The runtime was Sikarugir Wine 11.0 revision 1 with DXMT `v0.80-244-g7c8dee1`, o
 | Packaged app opens and Verify installation completes | PASS |
 | Packaged app starts the official updater | PASS |
 | Login through the native candidate's official game | User-confirmed |
-| Candidate reaches playable gameplay after login | FAIL, missing page background and repeated server-selection loop; diagnosis ongoing |
-| Runtime comparison against the working development setup | PASS, 6,166 entries match in hashes, symlink targets, and modes |
+| Candidate reaches playable gameplay after login | PASS, user-confirmed successful retest; duration and individual actions not recorded |
+| Runtime comparison against the working development setup | PASS, 6,166 entries match in hashes, symlink targets, and executable permission bits |
 | Candidate game and browser helpers load matching DXMT | Observed; module loading does not establish correct rendering |
 | Synthetic installer rejection and privacy checks | 41 assertions passed |
 | Core configuration, paths, hashing, locks, and command checks | PASS |
@@ -47,6 +47,8 @@ The runtime was Sikarugir Wine 11.0 revision 1 with DXMT `v0.80-244-g7c8dee1`, o
 
 Synthetic tests cover only the behaviors they exercise. Build success, a visible launcher window, and process uptime do not establish gameplay. Keep results tied to the app build and dependency versions tested. Recheck affected behavior when the app, game, or runtime changes.
 
-The matching runtime files and observed DXMT loading narrow the investigation. They do not explain the page problem or establish that the complete installed environment behaves like the development setup. Do not describe the packaged candidate as a working gameplay release while this failure remains unresolved.
+Earlier candidate attempts encountered a missing page background and repeated server selection, including after a restart. The user later reported a general server problem, then confirmed a successful retest without a runtime configuration change. We did not independently confirm a service incident or its cause. The earlier failed observations remain in the test history; they are not an established packaging defect.
 
 Machine-readable results and the tested executable fingerprint are in [verification.json](verification.json). A developer probe exercised the same native installer code used by the app; this does not claim the entire graphical file-picker flow was tested.
+
+After the successful user test, two fixed error messages were clarified to describe only the command output retained by this app. No runtime configuration or control flow changed. Core and release-boundary tests were rerun; gameplay was not repeated for this wording edit. The manifest distinguishes the rebuilt executable from the fingerprint used in the gameplay report.

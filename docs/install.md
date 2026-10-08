@@ -1,6 +1,6 @@
 # Start here
 
-**The current candidate has not reached playable gameplay.** Login succeeds, but the page after login has a missing background and repeatedly returns to server selection. Investigation is ongoing. The successful hour-long session used the separate development setup.
+**The native candidate works in the latest user-confirmed test on the documented Mac.** The separate development setup also has an earlier hour-long gameplay report. Other Macs and the individual acceptance checks listed in [Compatibility](compatibility.md) remain unverified.
 
 These instructions are for local candidate testing. There is no public download release yet. Complete distribution review and packaged-app validation are still pending.
 

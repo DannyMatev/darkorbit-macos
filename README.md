@@ -2,7 +2,7 @@
 
 An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver.
 
-**Current candidate status: gameplay acceptance failed.** Login succeeds, but the page after login has a missing background and repeatedly returns to server selection. The cause is under investigation. The earlier working development setup is separate from this native installation.
+**Current candidate status: working in the latest user test.** The user confirmed that the native Mac candidate works as expected on the tested Mac. This is a manual report from one configuration, not completion of every acceptance check.
 
 This is a local release candidate, not a published or publisher-approved product. The packaged application still needs the checks listed in [Compatibility](docs/compatibility.md), and the [distribution review](docs/distribution.md) has unresolved questions.
 
@@ -12,7 +12,7 @@ Start with the [installation guide](docs/install.md). The app uses four files th
 
 The candidate requires an Apple Silicon Mac, macOS 14.6 or later, Rosetta, and an internet connection. Only an M1 Pro with 16 GB of memory on macOS 26.0 has gameplay evidence. Other configurations are untested.
 
-One player reported about an hour of stable gameplay, smooth overall. Occasional lag spikes or frame drops were substantially reduced by lowering the game's graphics settings. This is a user report from one setup, not an FPS benchmark.
+In the earlier development setup, one player reported about an hour of stable gameplay, smooth overall. Occasional lag spikes or frame drops were substantially reduced by lowering the game's graphics settings. This is a user report from one setup, not an FPS benchmark.
 
 ## Want to contribute?
 
@@ -22,7 +22,7 @@ Read [Contributing](CONTRIBUTING.md), then the [architecture notes](docs/archite
 
 The native Mac app prepares and launches the official Windows updater. Wine supplies Windows compatibility, Rosetta runs the Intel-based runtime on Apple Silicon, and DXMT translates the game's DirectX graphics to Metal. The official updater manages game updates.
 
-Our launcher adds no credential service or telemetry. The game and separately installed dependencies have their own network behavior and terms. Account data remains in the local game installation, so do not share that folder or raw logs.
+Our launcher adds no credential service or telemetry. The game and its installers may create their own local logs, which are private and excluded from project packages. The game and separately installed dependencies have their own network behavior and terms. Local sign-in data is stored in the game installation, so do not share that folder or raw logs. The official online game also processes account data under its own privacy policy.
 
 ## Project boundaries
 

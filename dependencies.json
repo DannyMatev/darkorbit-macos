@@ -33,7 +33,17 @@
       "version": "6.0.36",
       "official_url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x64.exe",
       "sha256": "0d20debb26fc8b2bc84f25fbd9d4596a6364af8517ebf012e8b871127b798941",
-      "bundled": false
+      "bundled": false,
+      "license_review": {
+        "reviewed_on": "2026-10-08",
+        "method": "Static inspection of the verified installer; no execution",
+        "embedded_msi_eula": "Microsoft .NET Library License; identical RTF in all four MSI payloads",
+        "embedded_msi_eula_sha256": "0789330865c6a023eae6922b2ae9784a7089e5001d7b1e4e482b450facd5ba2d",
+        "host_license_txt_sha256": "7f6839a61ce892b79c6549e2dc5a81fdbd240a0b260f8881216b45b7fda8b45d",
+        "host_third_party_notices_sha256": "d5db0ed54363e40717ae09e746dec99ad5b09223cc1273bb870703176dd226b7",
+        "status": "Terms captured; intended end-user gameplay use through Wine requires interpretation",
+        "current_online_terms_identical_to_embedded": false
+      }
     }
   ],
   "selected_graphics": {
