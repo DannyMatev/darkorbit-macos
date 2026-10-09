@@ -4,6 +4,52 @@ This was a successful attempt at vibecoding a macos client for the game, didn't 
 
 [☕ Buy me a coffee](https://ko-fi.com/dannymv)
 
+## TLDR - quick setup
+
+**You need:** a Mac with an M-series chip, macOS 14.6 or newer, [Rosetta](https://support.apple.com/en-us/102527), internet, and about 25 GB of free space. Intel Macs are not supported by this setup.
+
+### 1. Get the Mac launcher
+
+There is no ready-to-download app release yet. For now, you need to build it once using the two copy-and-paste steps below. You do not need Homebrew, Python, or CrossOver.
+
+Open **Terminal** from **Applications > Utilities**, paste this, and press Return:
+
+```sh
+xcode-select --install
+```
+
+Choose **Install** and wait for Apple's tools to finish installing. If Terminal says the tools are already installed, continue. Then paste this whole block and press Return:
+
+```sh
+git clone https://github.com/DannyMatev/darkorbit-macos.git "$HOME/Downloads/darkorbit-macos" &&
+cd "$HOME/Downloads/darkorbit-macos" &&
+./scripts/build.sh &&
+open "build/DarkOrbit for Mac.app"
+```
+
+The launcher opens when the build finishes. For later sessions, open **Downloads > darkorbit-macos > build > DarkOrbit for Mac.app** in Finder. If a command fails, stop and check [Troubleshooting](docs/troubleshooting.md).
+
+### 2. Download these four files
+
+Save all four in **Downloads**. Keep them as downloaded: do not unzip them or open the `.exe` yourself.
+
+| Download | What it is |
+| --- | --- |
+| [WS12WineSikarugir11.0_1.tar.xz](https://github.com/Sikarugir-App/Engines/releases/download/v1.0/WS12WineSikarugir11.0_1.tar.xz) | Windows compatibility software |
+| [Template-1.0.21.tar.xz](https://github.com/Sikarugir-App/Template/releases/download/v1.0/Template-1.0.21.tar.xz) | Supporting files, including graphics support |
+| [DarkOrbit_Version1.1.113.zip](https://alicdn-oss-prod.darkorbit.com/release/archive/DarkOrbit_Version1.1.113.zip) | Official game and updater |
+| [windowsdesktop-runtime-6.0.36-win-x64.exe](https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x64.exe) | Microsoft software required by the updater |
+
+### 3. Install and play
+
+1. Close any other Wine games or apps normally. In our launcher, review the providers' terms and tick the acknowledgement box.
+2. Click **Choose four files and install...**. Hold **Command** while selecting all four files, confirm, and wait for setup to finish.
+3. Click **Play / check for game updates**, then **Start** in the official updater. Sign in through the game's own interface. Keep our Mac launcher open while playing.
+
+If the game stutters, try lowering its graphics settings. If macOS blocks the app, stop and follow the [installation guide](docs/install.md); do not disable Mac security protections.
+
+More help: [Full installation guide](docs/install.md) | [Troubleshooting](docs/troubleshooting.md) | [Report a problem](https://github.com/DannyMatev/darkorbit-macos/issues/new/choose)
+
 # Unofficial macOS launcher for DarkOrbit
 
 An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver. 

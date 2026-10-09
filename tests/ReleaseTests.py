@@ -112,6 +112,20 @@ class ReleaseTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 audit_release.audit_source()
 
+    def test_only_visible_readme_donation_label_allows_coffee_symbol(self):
+        donation = '[\u2615 Buy me a coffee](https://ko-fi.com/example)\n'
+        audit_release.check_content(donation.encode('utf-8'), 'README.md')
+        for content, label in [
+            (donation, 'docs/install.md'),
+            (donation + '\u200b', 'README.md'),
+            (donation + '\u2014', 'README.md'),
+            (donation + '<!-- hidden -->', 'README.md'),
+            ('\u2615 elsewhere', 'README.md'),
+        ]:
+            with self.subTest(label=label, content=content):
+                with self.assertRaises(ValueError):
+                    audit_release.check_content(content.encode('utf-8'), label)
+
     def test_historical_paths_must_be_allowlisted(self):
         audit_release.check_git_paths(b'README.md\0docs/compatibility.md\0')
         with self.assertRaises(ValueError) as result:

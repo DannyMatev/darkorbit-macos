@@ -107,7 +107,10 @@ def check_content(data, label, text=True):
         raise ValueError('Local home path in ' + label + '; value withheld')
     if text:
         decoded = data.decode('utf-8')
-        # First-party text is deliberately ASCII. Escaped test fixtures are fine.
+        # Preserve the owner's visible README donation label; other text stays ASCII.
+        if label == 'README.md':
+            decoded = re.sub(r'^\[\u2615 Buy me a coffee\]\(https://ko-fi\.com/[A-Za-z0-9_-]+\)$',
+                             '', decoded, flags=re.M)
         if any(ord(c) > 126 or (ord(c) < 32 and c not in '\n\r\t') for c in decoded):
             raise ValueError('Non-ASCII or hidden control character in ' + label)
         if label.endswith(('.md', '.txt', '.html')) and re.search(r'<!--|display\s*:\s*none|visibility\s*:\s*hidden|font-size\s*:\s*0', decoded, re.I):
