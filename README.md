@@ -1,6 +1,8 @@
 # READ HERE FIRST
 
-This was a successful attempt at vibecoding a macos client for the game, didn't really put that much effort into it other than make it stable enough to have non-disruptive play experience. Contribute, fork it or report bugs/suggestions here. If there's any demand I'll put some more effort into it. Everything below and onwards is AI generated but the setup is verified. Enjoy!
+This was a successful attempt at vibecoding a macos client for the game, didn't really put that much effort into it other than make it stable enough to have non-disruptive play experience. Contribute, fork it or report bugs/suggestions here. If there's any demand I'll put some more effort into it. Everything and onwards is AI generated but the setup is verified. Enjoy!
+
+[☕ Buy me a coffee](https://ko-fi.com/dannymv)
 
 # Unofficial macOS launcher for DarkOrbit
 
