@@ -152,9 +152,6 @@ def audit_git(files):
     tracked = tracked_data.decode().split('\0')
     if any(name and name not in allowed for name in tracked):
         raise ValueError('Git index includes files outside the release allowlist')
-    remotes = subprocess.check_output(['git','remote'],cwd=ROOT).strip()
-    if remotes:
-        raise ValueError('This local preparation repository must have no remote')
     have_head = subprocess.run(['git','rev-parse','--verify','HEAD'],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode == 0
     if not have_head:
         return
@@ -204,7 +201,7 @@ def main():
     try:
         files=audit_source();audit_git(files)
         count=audit_app(args.app) if args.app else 0
-        print(json.dumps({'source_files':len(files),'app_files':count,'privacy_and_style':'PASS','remote':'none','scope':'Allowlisted files and reachable Git objects; heuristic scan, not a guarantee'}))
+        print(json.dumps({'source_files':len(files),'app_files':count,'privacy_and_style':'PASS','network_access':'none','scope':'Allowlisted files and reachable Git objects; heuristic scan, not a guarantee'}))
     except (ValueError,UnicodeError,OSError,subprocess.SubprocessError) as error:
         if isinstance(error,ValueError): print('Audit failed: '+str(error),file=sys.stderr)
         else: print('Audit failed without exposing raw system output.',file=sys.stderr)

@@ -16,7 +16,7 @@ The packages contain original project source, its native helper app, documentati
 | Windows .NET through Wine | Microsoft supplies the runtime for end users; Wine-specific licensing/support assurance was not found |
 | Descriptive use of the game name | Reviewed as a compatibility reference with prominent unofficial wording; not worldwide trademark clearance |
 | Signing, notarization, broader testing | Delivery work, separate from copyright and license permission |
-| Publication | Not authorized by the project owner; everything remains local |
+| Publication | Source and documentation publication authorized on 9 October 2026; packaged app releases remain a separate decision |
 
 ## Publisher policy
 
@@ -46,6 +46,6 @@ Use the description **Unofficial macOS launcher for DarkOrbit**, identify the ga
 
 The source and helper-only package review is complete within the stated scope. No blanket provider-permission prerequisite has been established for publishing those original files. Current account-policy and Wine-specific assurances remain unconfirmed; obtain targeted clarification or qualified legal review if those assurances are required before your publication decision. No zero-risk promise is made.
 
-Signing/notarization and remaining acceptance checks are still needed for a finished ordinary-user download. They do not grant intellectual-property rights. Publishing also requires the owner's explicit authorization; this review sends or publishes nothing.
+Signing/notarization and remaining acceptance checks are still needed for a finished ordinary-user download. They do not grant intellectual-property rights. The owner authorized publishing this repository's source and documentation on 9 October 2026. That authorization does not include uploading packaged apps or private installation data.
 
 Share only the audited source and app archives when an export is authorized. Do not upload the enclosing development folder, installation data, or private reports. The source ZIP omits Git metadata. A future Git push can disclose author and committer names, email addresses, and timestamps. A signing certificate or hosting account can also identify the publisher.

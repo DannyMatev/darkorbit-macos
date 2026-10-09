@@ -26,6 +26,6 @@ Record the app's short message and the step that led to it. Do not delete the da
 
 ## Report a problem without exposing your account
 
-Use the relevant issue template if the repository is published. Include reproducible steps and a short description of what happened. Never attach passwords, cookies, tokens, account screenshots, full installation folders, or raw game logs. Do not include a home-directory path or your Mac username. The issue forms do not need any game account details.
+Use the relevant issue template in the repository. Include reproducible steps and a short description of what happened. Never attach passwords, cookies, tokens, account screenshots, full installation folders, or raw game logs. Do not include a home-directory path or your Mac username. The issue forms do not need any game account details.
 
 There is no private security-reporting channel configured in this candidate. Do not put secrets or exploit details in a public issue. Account and billing issues belong with the game's official support.

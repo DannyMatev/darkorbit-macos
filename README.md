@@ -4,7 +4,7 @@ An unofficial, vibe-coded hobby project built with AI assistance. It sets up a s
 
 **Current candidate status: working in the latest user test.** The user confirmed that the native Mac candidate works as expected on the tested Mac. This is a manual report from one configuration, not completion of every acceptance check.
 
-This is a local release candidate, not a published or publisher-approved product. The [distribution review](docs/distribution.md) found no specific restriction on redistributing the original files in our packages. It does not guarantee publisher account-policy acceptance or approval of this Wine configuration. Delivery and acceptance work remains in [Compatibility](docs/compatibility.md).
+This repository contains source for an experimental release candidate. It is not a publisher-approved product or a finished, signed Mac download. The [distribution review](docs/distribution.md) found no specific restriction on redistributing the original files in our packages. It does not guarantee publisher account-policy acceptance or approval of this Wine configuration. Delivery and acceptance work remains in [Compatibility](docs/compatibility.md).
 
 ## Want to play?
 

@@ -70,7 +70,7 @@ def main():
               'application_files':app_file_count,'archives':sums,
               'application_executable_sha256':executable_sha,
               'matches_tested_executable':executable_sha == tested_sha,
-              'status':'LOCAL CANDIDATE - publication not authorized; delivery checks remain',
+              'status':'LOCAL APP CANDIDATE - delivery checks remain; no upload performed',
               'distribution_review':'No specific third-party redistribution restriction identified for the original files in these packages',
               'provider_approval_or_legal_guarantee':False,
               'signature':'ad-hoc, not Developer ID or notarized','published':False,
