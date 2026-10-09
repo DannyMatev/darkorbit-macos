@@ -1,8 +1,12 @@
+# READ HERE FIRST
+
+This was a successful attempt at vibecoding a macos client for the game, didn't really put that much effort into it other than make it stable enough to have non-disruptive play experience. Contribute, fork it or report bugs/suggestions here. If there's any demand I'll put some more effort into it. Everything below and onwards is AI generated but the setup is verified. Enjoy!
+
 # Unofficial macOS launcher for DarkOrbit
 
-An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver.
+An unofficial, vibe-coded hobby project built with AI assistance. It sets up a separate compatibility environment and opens the official Windows DarkOrbit client on Apple Silicon Macs, without CrossOver. 
 
-**Current candidate status: working in the latest user test.** The user confirmed that the native Mac candidate works as expected on the tested Mac. This is a manual report from one configuration, not completion of every acceptance check.
+**Current candidate status: working in the latest user test.** Confirmed that the native Mac candidate works as expected on the tested Mac.
 
 This repository contains source for an experimental release candidate. It is not a publisher-approved product or a finished, signed Mac download. The [distribution review](docs/distribution.md) found no specific restriction on redistributing the original files in our packages. It does not guarantee publisher account-policy acceptance or approval of this Wine configuration. Delivery and acceptance work remains in [Compatibility](docs/compatibility.md).
 
@@ -12,7 +16,7 @@ Start with the [installation guide](docs/install.md). The app uses four files th
 
 The candidate requires an Apple Silicon Mac, macOS 14.6 or later, Rosetta, and an internet connection. Only an M1 Pro with 16 GB of memory on macOS 26.0 has gameplay evidence. Other configurations are untested.
 
-In the earlier development setup, one player reported about an hour of stable gameplay, smooth overall. Occasional lag spikes or frame drops were substantially reduced by lowering the game's graphics settings. This is a user report from one setup, not an FPS benchmark.
+In the earlier development setup, one player reported about an hour of stable gameplay, smooth overall. Occasional lag spikes or frame drops were substantially reduced by lowering the game's graphics settings.
 
 ## Want to contribute?
 
