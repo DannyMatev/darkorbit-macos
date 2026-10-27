@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added a large optional Ko-fi support button to the launcher introduction and About panel, using the README donation link.
+
 - Clarified the original-package distribution review and made unofficial branding prominent.
 
 - Added a native macOS launcher candidate for the official Windows DarkOrbit client.
