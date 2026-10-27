@@ -115,6 +115,8 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         stack.addArrangedSubview(title)
         stack.addArrangedSubview(label("Unofficial, vibe-coded hobby project built with AI assistance. This experimental app sets up a Windows compatibility environment for the official game. It is not affiliated with or endorsed by the game publisher.", size: 13))
         stack.addArrangedSubview(label("Local test build for Apple Silicon Macs. Rosetta is required. Other Mac configurations have not been verified. No game files or Windows runtimes are included.", size: 12, secondary: true))
+        playButton = largeButton("Play / check for game updates", action: #selector(play))
+        stack.addArrangedSubview(playButton)
         let supportRow = NSStackView(views: [
             donationButton(),
             label("Optional support for this hobby project.\nOpens Ko-fi in your browser.", size: 12, secondary: true)
@@ -123,8 +125,6 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         supportRow.alignment = .centerY
         stack.addArrangedSubview(supportRow)
         supportRow.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
-        playButton = button("Play / check for game updates", action: #selector(play))
-        stack.addArrangedSubview(playButton)
         progress = NSProgressIndicator()
         progress.style = .bar
         progress.isIndeterminate = true
@@ -192,18 +192,23 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         return value
     }
 
-    private func donationButton() -> NSButton {
-        let value = button("Buy me a coffee", action: #selector(openDonation))
+    private func largeButton(_ title: String, action: Selector) -> NSButton {
+        let value = button(title, action: action)
         value.controlSize = .large
         value.font = .systemFont(ofSize: 16, weight: .semibold)
+        NSLayoutConstraint.activate([
+            value.widthAnchor.constraint(equalToConstant: 300),
+            value.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        return value
+    }
+
+    private func donationButton() -> NSButton {
+        let value = largeButton("Buy me a coffee", action: #selector(openDonation))
         value.image = NSImage(systemSymbolName: "cup.and.saucer.fill", accessibilityDescription: nil)
         value.imagePosition = .imageLeading
         value.toolTip = Self.donationURL
         value.setAccessibilityHelp("Opens the creator's Ko-fi page in your default browser.")
-        NSLayoutConstraint.activate([
-            value.widthAnchor.constraint(greaterThanOrEqualToConstant: 220),
-            value.heightAnchor.constraint(equalToConstant: 44)
-        ])
         return value
     }
 
