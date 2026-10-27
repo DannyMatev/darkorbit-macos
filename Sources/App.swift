@@ -34,6 +34,7 @@ private struct DarkOrbitApplication {
 }
 
 private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
+    private static let donationURL = "https://ko-fi.com/dannymv"
     private let layout = RuntimeCore.defaultLayout
     private let cancellation = CancellationFlag()
     private var operation = Operation.idle
@@ -114,8 +115,16 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         stack.addArrangedSubview(title)
         stack.addArrangedSubview(label("Unofficial, vibe-coded hobby project built with AI assistance. This experimental app sets up a Windows compatibility environment for the official game. It is not affiliated with or endorsed by the game publisher.", size: 13))
         stack.addArrangedSubview(label("Local test build for Apple Silicon Macs. Rosetta is required. Other Mac configurations have not been verified. No game files or Windows runtimes are included.", size: 12, secondary: true))
-        playButton = button("Play / check for game updates", action: #selector(play))
+        playButton = largeButton("Play / check for game updates", action: #selector(play))
         stack.addArrangedSubview(playButton)
+        let supportRow = NSStackView(views: [
+            donationButton(),
+            label("Optional support for this hobby project.\nOpens Ko-fi in your browser.", size: 12, secondary: true)
+        ])
+        supportRow.spacing = 14
+        supportRow.alignment = .centerY
+        stack.addArrangedSubview(supportRow)
+        supportRow.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
         progress = NSProgressIndicator()
         progress.style = .bar
         progress.isIndeterminate = true
@@ -180,6 +189,26 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
     private func button(_ title: String, action: Selector) -> NSButton {
         let value = NSButton(title: title, target: self, action: action)
         value.bezelStyle = .rounded
+        return value
+    }
+
+    private func largeButton(_ title: String, action: Selector) -> NSButton {
+        let value = button(title, action: action)
+        value.controlSize = .large
+        value.font = .systemFont(ofSize: 16, weight: .semibold)
+        NSLayoutConstraint.activate([
+            value.widthAnchor.constraint(equalToConstant: 300),
+            value.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        return value
+    }
+
+    private func donationButton() -> NSButton {
+        let value = largeButton("Buy me a coffee", action: #selector(openDonation))
+        value.image = NSImage(systemSymbolName: "cup.and.saucer.fill", accessibilityDescription: nil)
+        value.imagePosition = .imageLeading
+        value.toolTip = Self.donationURL
+        value.setAccessibilityHelp("Opens the creator's Ko-fi page in your default browser.")
         return value
     }
 
@@ -367,6 +396,8 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         }
     }
 
+    @objc private func openDonation() { openSource(Self.donationURL) }
+
     @objc private func openGameSource() { openSource("https://alicdn-oss-prod.darkorbit.com/release/archive/DarkOrbit_Version1.1.113.zip") }
     @objc private func openEngineSource() { openSource("https://github.com/Sikarugir-App/Engines/releases/download/v1.0/WS12WineSikarugir11.0_1.tar.xz") }
     @objc private func openTemplateSource() { openSource("https://github.com/Sikarugir-App/Template/releases/download/v1.0/Template-1.0.21.tar.xz") }
@@ -382,7 +413,21 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
     }
 
     @objc private func showAbout() {
-        showMessage("Unofficial DarkOrbit launcher 0.1.0", detail: "An unofficial, vibe-coded hobby project built with AI assistance. This experimental local launcher contains no game or Windows runtime binaries. It is not affiliated with or endorsed by the game publisher. The game and dependencies retain their own terms and licenses.")
+        let alert = NSAlert()
+        alert.messageText = "Unofficial DarkOrbit launcher 0.1.0"
+        alert.informativeText = "An unofficial, vibe-coded hobby project built with AI assistance. This experimental local launcher contains no game or Windows runtime binaries. It is not affiliated with or endorsed by the game publisher. The game and dependencies retain their own terms and licenses."
+        let support = NSStackView(frame: NSRect(x: 0, y: 0, width: 360, height: 84))
+        support.orientation = .vertical
+        support.alignment = .centerX
+        support.spacing = 8
+        support.addArrangedSubview(donationButton())
+        let note = label("Optional support for this hobby project.\nOpens Ko-fi in your browser.", size: 12, secondary: true)
+        note.alignment = .center
+        note.widthAnchor.constraint(equalToConstant: 360).isActive = true
+        support.addArrangedSubview(note)
+        alert.accessoryView = support
+        alert.addButton(withTitle: "OK")
+        alert.beginSheetModal(for: window)
     }
 
     private func showMessage(_ title: String, detail: String) {
